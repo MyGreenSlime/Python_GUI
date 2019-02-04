@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import scrolledtext
+from tkinter import Menu
 win = tk.Tk()
 
 win.title('Python GUI')
@@ -76,6 +77,25 @@ buttonsFrame.grid(column = 1, row = 7)
 ttk.Label(buttonsFrame, text = 'Label1').grid(column = 0, row = 0)
 ttk.Label(buttonsFrame, text = 'Label2').grid(column = 1, row = 0)
 ttk.Label(buttonsFrame, text = 'Label3').grid(column = 2, row = 0)
+
+def Exit():
+    win.quit()
+    win.destroy()
+    exit()
+
+menuBar = Menu(win)
+win.config(menu = menuBar)
+
+fileMenu = Menu(menuBar, tearoff = 0)
+fileMenu.add_command(label = 'New')
+fileMenu.add_separator()
+fileMenu.add_command(label = 'Exit', command = Exit)
+menuBar.add_cascade(label = 'File', menu = fileMenu)
+
+helpMenu =Menu(menuBar, tearoff = 0)
+helpMenu.add_command(label = 'About')
+menuBar.add_cascade(label = 'Help', menu = helpMenu)
+
 
 
 win.mainloop()
